@@ -45,8 +45,9 @@ else
     fi
 fi
 
-git fetch origin next 
-if [ $(git rev-parse HEAD) = $(git rev-parse FETCH_HEAD) ]; then
+# Latest tag refers to the latest minor release of Camunda BPM platform.
+# https://github.com/camunda/docker-camunda-bpm-platform/blob/next/README.md#supported-tagsreleases
+if [ "${SNAPSHOT}" = "false" ]; then
     # tagging image as latest
     tag_and_push "${DISTRO}-latest"
     tag_and_push "${DISTRO}"
